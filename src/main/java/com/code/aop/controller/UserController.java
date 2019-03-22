@@ -1,5 +1,6 @@
 package com.code.aop.controller;
 
+import com.code.aop.annotation.UserAccess;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,5 +15,11 @@ public class UserController {
     @RequestMapping("/doError")
     public Object error() {
         return 1 / 0;
+    }
+
+    @RequestMapping("/second")
+    @UserAccess(desc = "second")
+    public Object second() {
+        return "second controller";
     }
 }
